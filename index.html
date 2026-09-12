@@ -1,21 +1,27 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PixelZone</title>
+
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
             font-family: Arial, sans-serif;
             background: #111827;
             color: white;
-            text-align: center;
         }
 
         header {
-            padding: 40px 20px;
-            background: #2563eb;
+            padding: 50px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
         }
 
         h1 {
@@ -23,8 +29,15 @@
             margin: 0;
         }
 
+        header p {
+            font-size: 18px;
+        }
+
         .contenido {
-            padding: 30px;
+            padding: 35px 20px;
+            max-width: 1100px;
+            margin: auto;
+            text-align: center;
         }
 
         .tarjetas {
@@ -37,8 +50,14 @@
         .tarjeta {
             background: #1f2937;
             padding: 25px;
-            border-radius: 15px;
-            width: 220px;
+            border-radius: 18px;
+            width: 230px;
+            box-shadow: 0 8px 20px #0005;
+            transition: 0.2s;
+        }
+
+        .tarjeta:hover {
+            transform: translateY(-5px);
         }
 
         .tarjeta h2 {
@@ -52,6 +71,80 @@
             padding: 12px 20px;
             border-radius: 8px;
             cursor: pointer;
+            font-size: 15px;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        .seccion {
+            display: none;
+            margin-top: 40px;
+            background: #1f2937;
+            padding: 25px;
+            border-radius: 18px;
+        }
+
+        .seccion.activa {
+            display: block;
+        }
+
+        .fondos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .fondo {
+            width: 180px;
+            height: 120px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .fondo1 {
+            background: linear-gradient(135deg, #2563eb, #06b6d4);
+        }
+
+        .fondo2 {
+            background: linear-gradient(135deg, #7c3aed, #ec4899);
+        }
+
+        .fondo3 {
+            background: linear-gradient(135deg, #111827, #4b5563);
+        }
+
+        .fondo4 {
+            background: linear-gradient(135deg, #16a34a, #22c55e);
+        }
+
+        .video {
+            margin: 15px auto;
+            max-width: 600px;
+        }
+
+        input[type="file"] {
+            margin: 15px;
+        }
+
+        canvas {
+            max-width: 100%;
+            background: white;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 40px;
+            background: #0f172a;
+            color: #94a3b8;
         }
     </style>
 </head>
@@ -64,36 +157,197 @@
 </header>
 
 <div class="contenido">
-    <h2>¿Qué puedes hacer?</h2>
+
+    <h2>🚀 ¿Qué puedes hacer?</h2>
 
     <div class="tarjetas">
 
         <div class="tarjeta">
             <h2>🖼️ Fondos</h2>
-            <p>Fondos de pantalla para tu celular o computadora.</p>
-            <button>Ver fondos</button>
+            <p>Explora fondos para tu celular o computadora.</p>
+            <button onclick="mostrar('fondos')">Ver fondos</button>
         </div>
 
         <div class="tarjeta">
             <h2>🎬 Videos</h2>
-            <p>Encuentra y crea contenido en video.</p>
-            <button>Ver videos</button>
+            <p>Agrega y reproduce tus propios videos.</p>
+            <button onclick="mostrar('videos')">Ver videos</button>
         </div>
 
         <div class="tarjeta">
             <h2>📸 Editor</h2>
-            <p>Edita tus fotos y crea diseños.</p>
-            <button>Editar fotos</button>
+            <p>Sube una imagen y aplica filtros sencillos.</p>
+            <button onclick="mostrar('editor')">Editar fotos</button>
         </div>
 
         <div class="tarjeta">
             <h2>✨ Más</h2>
             <p>Próximamente tendremos más herramientas.</p>
-            <button>Explorar</button>
+            <button onclick="mostrar('mas')">Explorar</button>
         </div>
 
     </div>
+
+    <!-- FONDOS -->
+    <div id="fondos" class="seccion">
+
+        <h2>🖼️ Fondos de pantalla</h2>
+        <p>Elige tu estilo favorito.</p>
+
+        <div class="fondos">
+            <div class="fondo fondo1">💙 AZUL</div>
+            <div class="fondo fondo2">💜 NEÓN</div>
+            <div class="fondo fondo3">🖤 DARK</div>
+            <div class="fondo fondo4">💚 VERDE</div>
+        </div>
+
+    </div>
+
+    <!-- VIDEOS -->
+    <div id="videos" class="seccion">
+
+        <h2>🎬 Videos</h2>
+
+        <p>Selecciona un video de tu dispositivo para reproducirlo.</p>
+
+        <input type="file" accept="video/*" onchange="cargarVideo(event)">
+
+        <div class="video">
+            <video id="videoPlayer" controls width="100%" style="display:none;"></video>
+        </div>
+
+    </div>
+
+    <!-- EDITOR -->
+    <div id="editor" class="seccion">
+
+        <h2>📸 Editor de fotos</h2>
+
+        <p>Selecciona una imagen para comenzar.</p>
+
+        <input type="file" accept="image/*" onchange="cargarImagen(event)">
+
+        <br>
+
+        <button onclick="filtroGris()">🌑 Blanco y negro</button>
+        <button onclick="filtroNormal()">🔄 Normal</button>
+
+        <br>
+
+        <canvas id="canvas"></canvas>
+
+    </div>
+
+    <!-- MÁS -->
+    <div id="mas" class="seccion">
+
+        <h2>✨ Próximamente</h2>
+
+        <p>Estamos preparando nuevas herramientas para PixelZone.</p>
+
+        <p>🎨 Más diseños</p>
+        <p>🎬 Más contenido</p>
+        <p>🖼️ Más fondos</p>
+        <p>⚡ Nuevas herramientas</p>
+
+    </div>
+
 </div>
+
+<footer>
+    © 2026 PixelZone — Tu zona digital 🚀
+</footer>
+
+<script>
+
+    function mostrar(id) {
+
+        document.querySelectorAll(".seccion").forEach(function(seccion) {
+            seccion.classList.remove("activa");
+        });
+
+        document.getElementById(id).classList.add("activa");
+
+        document.getElementById(id).scrollIntoView({
+            behavior: "smooth"
+        });
+    }
+
+
+    function cargarVideo(event) {
+
+        const archivo = event.target.files[0];
+
+        if (!archivo) return;
+
+        const video = document.getElementById("videoPlayer");
+
+        video.src = URL.createObjectURL(archivo);
+        video.style.display = "block";
+    }
+
+
+    let imagenOriginal = null;
+
+    function cargarImagen(event) {
+
+        const archivo = event.target.files[0];
+
+        if (!archivo) return;
+
+        const imagen = new Image();
+
+        imagen.onload = function() {
+
+            const canvas = document.getElementById("canvas");
+            const ctx = canvas.getContext("2d");
+
+            canvas.width = imagen.width;
+            canvas.height = imagen.height;
+
+            ctx.drawImage(imagen, 0, 0);
+
+            imagenOriginal = imagen;
+        };
+
+        imagen.src = URL.createObjectURL(archivo);
+    }
+
+
+    function filtroNormal() {
+
+        if (!imagenOriginal) {
+            alert("Primero selecciona una imagen.");
+            return;
+        }
+
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+
+        ctx.filter = "none";
+        ctx.drawImage(imagenOriginal, 0, 0);
+    }
+
+
+    function filtroGris() {
+
+        if (!imagenOriginal) {
+            alert("Primero selecciona una imagen.");
+            return;
+        }
+
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+
+        ctx.filter = "grayscale(100%)";
+        ctx.drawImage(imagenOriginal, 0, 0);
+
+        ctx.filter = "none";
+    }
+
+</script>
 
 </body>
 </html>
+```
+
