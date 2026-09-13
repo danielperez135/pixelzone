@@ -7,291 +7,140 @@
 
 <style>
 *{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
 body{
-  font-family:Arial,sans-serif;
-  background:#f5f5f7;
-  color:#171717;
+    font-family:Arial,sans-serif;
+    background:#f5f5f5;
+    color:#222;
 }
 
 header{
-  background:linear-gradient(135deg,#6d28d9,#9333ea);
-  color:white;
-  padding:18px 6%;
-  position:sticky;
-  top:0;
-  z-index:100;
+    background:linear-gradient(135deg,#111,#333);
+    color:white;
+    padding:45px 20px;
+    text-align:center;
 }
 
-.header{
-  max-width:1300px;
-  margin:auto;
-  display:flex;
-  align-items:center;
-  gap:20px;
+header h1{
+    font-size:45px;
+    margin-bottom:10px;
 }
 
-.logo{
-  font-size:28px;
-  font-weight:bold;
-}
-
-.search{
-  flex:1;
-}
-
-.search input{
-  width:100%;
-  padding:14px 20px;
-  border:0;
-  border-radius:30px;
-  font-size:16px;
-  outline:none;
-}
-
-.cart{
-  background:white;
-  color:#6d28d9;
-  border:0;
-  padding:13px 18px;
-  border-radius:25px;
-  cursor:pointer;
-  font-weight:bold;
+header p{
+    font-size:18px;
 }
 
 nav{
-  background:white;
-  padding:12px 6%;
-  display:flex;
-  gap:10px;
-  overflow:auto;
+    position:sticky;
+    top:0;
+    z-index:10;
+    background:white;
+    padding:15px;
+    text-align:center;
+    box-shadow:0 2px 10px #ccc;
 }
 
-nav button{
-  border:0;
-  padding:10px 17px;
-  border-radius:20px;
-  background:#eee7ff;
-  color:#5b21b6;
-  cursor:pointer;
-  white-space:nowrap;
+nav a{
+    text-decoration:none;
+    color:#222;
+    font-weight:bold;
+    margin:8px;
 }
 
-.hero{
-  width:90%;
-  max-width:1300px;
-  margin:30px auto;
-  padding:60px;
-  border-radius:30px;
-  color:white;
-  background:linear-gradient(135deg,#111827,#581c87,#7e22ce);
+.categoria{
+    max-width:1200px;
+    margin:45px auto;
+    padding:0 20px;
 }
 
-.hero h1{
-  font-size:48px;
-  max-width:700px;
-  margin-bottom:15px;
+.categoria h2{
+    font-size:30px;
+    margin-bottom:20px;
 }
 
-.hero p{
-  font-size:18px;
-  max-width:650px;
-  margin-bottom:25px;
-}
-
-.hero button{
-  border:0;
-  padding:14px 22px;
-  border-radius:25px;
-  cursor:pointer;
-  font-weight:bold;
-  margin-right:8px;
-}
-
-.ver{
-  color:#6d28d9;
-}
-
-.whatsapp{
-  background:#22c55e;
-  color:white;
-}
-
-.container{
-  width:90%;
-  max-width:1300px;
-  margin:auto;
-}
-
-.title{
-  font-size:30px;
-  margin:35px 0 20px;
-}
-
-.packs{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:20px;
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
 }
 
 .pack{
-  background:white;
-  padding:18px;
-  border-radius:20px;
-  box-shadow:0 5px 20px #00000012;
-  transition:.2s;
+    background:white;
+    border-radius:15px;
+    padding:22px;
+    box-shadow:0 5px 18px #ddd;
+    transition:.2s;
 }
 
 .pack:hover{
-  transform:translateY(-5px);
+    transform:translateY(-5px);
+    box-shadow:0 8px 25px #ccc;
 }
 
-.pack-img{
-  height:160px;
-  border-radius:15px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-size:65px;
-  background:linear-gradient(135deg,#ede9fe,#faf5ff);
-  margin-bottom:15px;
+.pack .icon{
+    font-size:45px;
+    margin-bottom:12px;
 }
 
 .pack h3{
-  margin-bottom:8px;
+    margin-bottom:8px;
 }
 
 .pack p{
-  color:#777;
-  font-size:14px;
-  min-height:35px;
+    color:#666;
+    font-size:14px;
+    min-height:40px;
 }
 
-.price{
-  color:#6d28d9;
-  font-size:21px;
-  font-weight:bold;
-  margin:12px 0;
+.precio{
+    font-size:21px;
+    font-weight:bold;
+    margin:18px 0;
 }
 
-.pack button{
-  width:100%;
-  border:0;
-  padding:12px;
-  border-radius:10px;
-  background:#6d28d9;
-  color:white;
-  cursor:pointer;
-  font-weight:bold;
+.btn{
+    display:block;
+    text-align:center;
+    background:#111;
+    color:white;
+    text-decoration:none;
+    padding:12px;
+    border-radius:10px;
+    font-weight:bold;
 }
 
-.editor{
-  margin-top:45px;
-  background:white;
-  padding:25px;
-  border-radius:20px;
+.btn:hover{
+    background:#333;
 }
 
-.editor input{
-  margin-top:15px;
+.contacto{
+    background:#111;
+    color:white;
+    text-align:center;
+    padding:50px 20px;
+    margin-top:50px;
+}
+
+.whatsapp{
+    display:inline-block;
+    margin-top:20px;
+    background:#25D366;
+    color:white;
+    text-decoration:none;
+    padding:15px 25px;
+    border-radius:12px;
+    font-weight:bold;
 }
 
 footer{
-  margin-top:60px;
-  background:#111827;
-  color:white;
-  text-align:center;
-  padding:40px;
-}
-
-/* MODALES */
-
-.modal{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:#0008;
-  z-index:1000;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-}
-
-.modal-box{
-  background:white;
-  width:100%;
-  max-width:550px;
-  max-height:90vh;
-  overflow:auto;
-  padding:25px;
-  border-radius:20px;
-  position:relative;
-}
-
-.close{
-  position:absolute;
-  right:20px;
-  top:12px;
-  font-size:30px;
-  cursor:pointer;
-}
-
-.cart-item{
-  padding:15px 0;
-  border-bottom:1px solid #ddd;
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-}
-
-.cart-item button{
-  border:0;
-  background:#ef4444;
-  color:white;
-  border-radius:8px;
-  padding:7px;
-  cursor:pointer;
-}
-
-.total{
-  font-size:22px;
-  font-weight:bold;
-  margin:20px 0;
-}
-
-.pay{
-  width:100%;
-  padding:14px;
-  background:#6d28d9;
-  color:white;
-  border:0;
-  border-radius:10px;
-  cursor:pointer;
-  font-weight:bold;
-}
-
-@media(max-width:700px){
-
-  .header{
-    flex-wrap:wrap;
-  }
-
-  .search{
-    order:3;
-    width:100%;
-  }
-
-  .hero{
-    padding:35px 25px;
-  }
-
-  .hero h1{
-    font-size:35px;
-  }
+    background:#000;
+    color:#aaa;
+    text-align:center;
+    padding:20px;
 }
 </style>
 </head>
@@ -299,703 +148,231 @@ footer{
 <body>
 
 <header>
-
-<div class="header">
-
-<div class="logo">
-✨ PixelZone
-</div>
-
-<div class="search">
-<input
-id="buscador"
-type="text"
-placeholder="🔎 Buscar packs..."
->
-</div>
-
-<button class="cart" onclick="abrirCarrito()">
-🛒 Carrito (<span id="cantidad">0</span>)
-</button>
-
-</div>
-
+    <h1>PixelZone</h1>
+    <p>Fondos, diseños, emojis, videos y recursos para crear contenido.</p>
 </header>
 
-
 <nav>
-
-<button onclick="filtrar('todos')">🏠 Todos</button>
-<button onclick="filtrar('wallpapers')">🖼️ Wallpapers</button>
-<button onclick="filtrar('emojis')">😀 Emojis</button>
-<button onclick="filtrar('stickers')">🔥 Stickers</button>
-<button onclick="filtrar('fotos')">📸 Fotos</button>
-<button onclick="filtrar('videos')">🎬 Videos</button>
-<button onclick="filtrar('gaming')">🎮 Gaming</button>
-<button onclick="filtrar('sonidos')">🔊 Sonidos</button>
-
+    <a href="#fondos">🌌 Fondos</a>
+    <a href="#diseno">🎨 Diseño</a>
+    <a href="#emojis">😀 Emojis y Stickers</a>
+    <a href="#videos">🎬 Videos</a>
+    <a href="#gaming">🎮 Gaming</a>
+    <a href="#contacto">📞 Contacto</a>
 </nav>
 
+<!-- FONDOS -->
+<section class="categoria" id="fondos">
+<h2>🌌 Fondos</h2>
 
-<section class="hero">
+<div class="grid">
 
-<h1>
-Todo para crear. Todo en PixelZone.
-</h1>
+<div class="pack"><div class="icon">🌌</div><h3>Pack Galáctico</h3><p>Fondos espaciales y galaxias.</p><div class="precio">$5.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
 
-<p>
-Wallpapers, emojis, stickers, fotos, videos,
-sonidos y packs digitales.
-</p>
+<div class="pack"><div class="icon">🌈</div><h3>Pack Neón</h3><p>Fondos brillantes estilo neón.</p><div class="precio">$7.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
 
-<button class="ver" onclick="document.getElementById('tienda').scrollIntoView()">
-🛍️ Ver packs
-</button>
+<div class="pack"><div class="icon">🌅</div><h3>Pack Sunset</h3><p>Atardeceres y paisajes.</p><div class="precio">$5.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
 
-<button class="whatsapp" onclick="agenda()">
-📅 Agenda tu pedido
-</button>
+<div class="pack"><div class="icon">🌊</div><h3>Pack Aqua</h3><p>Fondos azules y acuáticos.</p><div class="precio">$6.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
 
+<div class="pack"><div class="icon">🔥</div><h3>Pack Fuego</h3><p>Fondos de fuego y energía.</p><div class="precio">$7.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
+
+<div class="pack"><div class="icon">❄️</div><h3>Pack Hielo</h3><p>Fondos congelados y azules.</p><div class="precio">$6.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
+
+<div class="pack"><div class="icon">🌴</div><h3>Pack Tropical</h3><p>Fondos tropicales y naturales.</p><div class="precio">$5.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
+
+<div class="pack"><div class="icon">🏙️</div><h3>Pack City</h3><p>Ciudades y paisajes urbanos.</p><div class="precio">$7.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
+
+<div class="pack"><div class="icon">🌑</div><h3>Pack Dark</h3><p>Fondos oscuros y elegantes.</p><div class="precio">$6.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
+
+<div class="pack"><div class="icon">🚀</div><h3>Pack Space PRO</h3><p>Fondos espaciales premium.</p><div class="precio">$12.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
+
+<div class="pack"><div class="icon">🌈</div><h3>Pack Rainbow</h3><p>Fondos llenos de color.</p><div class="precio">$6.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
+
+<div class="pack"><div class="icon">🌿</div><h3>Pack Nature</h3><p>Naturaleza y paisajes.</p><div class="precio">$7.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
+
+<div class="pack"><div class="icon">⚫</div><h3>Pack Black & White</h3><p>Fondos minimalistas.</p><div class="precio">$5.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
+
+<div class="pack"><div class="icon">🏢</div><h3>Pack Urban</h3><p>Estilo urbano y moderno.</p><div class="precio">$7.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
+
+<div class="pack"><div class="icon">🪐</div><h3>Pack Universo</h3><p>Universo, planetas y estrellas.</p><div class="precio">$9.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
+
+</div>
 </section>
 
+<!-- DISEÑO -->
+<section class="categoria" id="diseno">
+<h2>🎨 Diseño</h2>
 
-<main class="container" id="tienda">
+<div class="grid">
 
-<h2 class="title">
-🔥 Packs de PixelZone
-</h2>
+<div class="pack"><div class="icon">🎨</div><h3>Pack Creator</h3><p>Recursos para creadores.</p><div class="precio">$9.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
 
-<div class="packs" id="packs">
+<div class="pack"><div class="icon">🖌️</div><h3>Pack Diseñador</h3><p>Recursos gráficos para diseño.</p><div class="precio">$12.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
 
+<div class="pack"><div class="icon">🌈</div><h3>Pack Color</h3><p>Recursos y elementos coloridos.</p><div class="precio">$7.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
 
-<!-- PACKS -->
+<div class="pack"><div class="icon">✨</div><h3>Pack Glow</h3><p>Elementos con brillo.</p><div class="precio">$8.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
 
-<div class="pack" data-cat="wallpapers">
+<div class="pack"><div class="icon">💥</div><h3>Pack Efectos PRO</h3><p>Efectos gráficos profesionales.</p><div class="precio">$14.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
 
-<div class="pack-img">🌌</div>
+<div class="pack"><div class="icon">⚡</div><h3>Pack Glitch</h3><p>Elementos estilo glitch.</p><div class="precio">$9.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
 
-<h3>Mega Pack PixelZone</h3>
+<div class="pack"><div class="icon">🤖</div><h3>Pack Cyber</h3><p>Recursos cyber y tecnológicos.</p><div class="precio">$11.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
 
-<p>Una colección completa de recursos.</p>
+<div class="pack"><div class="icon">🧊</div><h3>Pack 3D</h3><p>Elementos gráficos 3D.</p><div class="precio">$14.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
 
-<div class="price">$14.900 COP</div>
+<div class="pack"><div class="icon">💎</div><h3>Pack Luxury</h3><p>Diseños elegantes y premium.</p><div class="precio">$15.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
 
-<button onclick="agregar('Mega Pack PixelZone',14900)">
-🛒 Agregar
-</button>
+<div class="pack"><div class="icon">💰</div><h3>Pack Money</h3><p>Elementos gráficos de dinero.</p><div class="precio">$9.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
 
-</div>
+<div class="pack"><div class="icon">🧸</div><h3>Pack Cute</h3><p>Recursos tiernos y coloridos.</p><div class="precio">$7.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
 
+<div class="pack"><div class="icon">🌸</div><h3>Pack Aesthetic</h3><p>Elementos aesthetic.</p><div class="precio">$9.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
 
-<div class="pack" data-cat="wallpapers">
+<div class="pack"><div class="icon">🎉</div><h3>Pack Fiesta</h3><p>Recursos para diseños de fiesta.</p><div class="precio">$7.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
 
-<div class="pack-img">🌈</div>
+<div class="pack"><div class="icon">🚀</div><h3>Pack Futurista</h3><p>Diseños modernos y futuristas.</p><div class="precio">$12.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
 
-<h3>Pack Neón</h3>
-
-<p>Fondos con diseños neón.</p>
-
-<div class="price">$4.900 COP</div>
-
-<button onclick="agregar('Pack Neón',4900)">
-🛒 Agregar
-</button>
+<div class="pack"><div class="icon">👑</div><h3>Pack Premium</h3><p>Recursos exclusivos de diseño.</p><div class="precio">$19.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
 
 </div>
-
-
-<div class="pack" data-cat="wallpapers">
-
-<div class="pack-img">🚀</div>
-
-<h3>Pack Futurista</h3>
-
-<p>Fondos futuristas y tecnológicos.</p>
-
-<div class="price">$12.900 COP</div>
-
-<button onclick="agregar('Pack Futurista',12900)">
-🛒 Agregar
-</button>
-
-</div>
-
-
-<div class="pack" data-cat="emojis">
-
-<div class="pack-img">😀</div>
-
-<h3>Mega Pack Emojis</h3>
-
-<p>Emojis para tus proyectos.</p>
-
-<div class="price">$3.900 COP</div>
-
-<button onclick="agregar('Mega Pack Emojis',3900)">
-🛒 Agregar
-</button>
-
-</div>
-
-
-<div class="pack" data-cat="stickers">
-
-<div class="pack-img">🔥</div>
-
-<h3>Pack Stickers</h3>
-
-<p>Stickers divertidos y creativos.</p>
-
-<div class="price">$4.900 COP</div>
-
-<button onclick="agregar('Pack Stickers',4900)">
-🛒 Agregar
-</button>
-
-</div>
-
-
-<div class="pack" data-cat="fotos">
-
-<div class="pack-img">📸</div>
-
-<h3>Pack Fotos PRO</h3>
-
-<p>Recursos fotográficos.</p>
-
-<div class="price">$6.900 COP</div>
-
-<button onclick="agregar('Pack Fotos PRO',6900)">
-🛒 Agregar
-</button>
-
-</div>
-
-
-<div class="pack" data-cat="videos">
-
-<div class="pack-img">🎬</div>
-
-<h3>Creator PRO</h3>
-
-<p>Recursos para crear videos.</p>
-
-<div class="price">$19.900 COP</div>
-
-<button onclick="agregar('Creator PRO',19900)">
-🛒 Agregar
-</button>
-
-</div>
-
-
-<div class="pack" data-cat="videos">
-
-<div class="pack-img">📱</div>
-
-<h3>Pack Viral</h3>
-
-<p>Recursos para contenido viral.</p>
-
-<div class="price">$11.900 COP</div>
-
-<button onclick="agregar('Pack Viral',11900)">
-🛒 Agregar
-</button>
-
-</div>
-
-
-<div class="pack" data-cat="gaming">
-
-<div class="pack-img">🎮</div>
-
-<h3>Gaming Pack</h3>
-
-<p>Recursos especiales para gamers.</p>
-
-<div class="price">$12.900 COP</div>
-
-<button onclick="agregar('Gaming Pack',12900)">
-🛒 Agregar
-</button>
-
-</div>
-
-
-<div class="pack" data-cat="gaming">
-
-<div class="pack-img">⚽</div>
-
-<h3>Pack Football</h3>
-
-<p>Recursos para contenido de fútbol.</p>
-
-<div class="price">$11.900 COP</div>
-
-<button onclick="agregar('Pack Football',11900)">
-🛒 Agregar
-</button>
-
-</div>
-
-
-<div class="pack" data-cat="sonidos">
-
-<div class="pack-img">🔊</div>
-
-<h3>Pack Sound FX</h3>
-
-<p>Efectos de sonido para videos.</p>
-
-<div class="price">$4.900 COP</div>
-
-<button onclick="agregar('Pack Sound FX',4900)">
-🛒 Agregar
-</button>
-
-</div>
-
-
-<div class="pack" data-cat="stickers">
-
-<div class="pack-img">😂</div>
-
-<h3>Pack Meme</h3>
-
-<p>Recursos para crear memes.</p>
-
-<div class="price">$7.900 COP</div>
-
-<button onclick="agregar('Pack Meme',7900)">
-🛒 Agregar
-</button>
-
-</div>
-
-
-<div class="pack" data-cat="fotos">
-
-<div class="pack-img">✨</div>
-
-<h3>Pack Aesthetic</h3>
-
-<p>Recursos aesthetic para tus diseños.</p>
-
-<div class="price">$13.900 COP</div>
-
-<button onclick="agregar('Pack Aesthetic',13900)">
-🛒 Agregar
-</button>
-
-</div>
-
-
-<div class="pack" data-cat="videos">
-
-<div class="pack-img">💎</div>
-
-<h3>Pack Ultimate</h3>
-
-<p>Nuestro paquete más completo.</p>
-
-<div class="price">$39.900 COP</div>
-
-<button onclick="agregar('Pack Ultimate',39900)">
-🛒 Agregar
-</button>
-
-</div>
-
-
-<div class="pack" data-cat="wallpapers">
-
-<div class="pack-img">💻</div>
-
-<h3>Pack Cyber</h3>
-
-<p>Diseños cyber tecnológicos.</p>
-
-<div class="price">$15.900 COP</div>
-
-<button onclick="agregar('Pack Cyber',15900)">
-🛒 Agregar
-</button>
-
-</div>
-
-
-<div class="pack" data-cat="videos">
-
-<div class="pack-img">🎥</div>
-
-<h3>Creator MAX</h3>
-
-<p>Recursos avanzados para creadores.</p>
-
-<div class="price">$29.900 COP</div>
-
-<button onclick="agregar('Creator MAX',29900)">
-🛒 Agregar
-</button>
-
-</div>
-
-
-</div>
-
-
-<!-- EDITOR -->
-
-<section class="editor">
-
-<h2>📸 Editor de fotos</h2>
-
-<p>Sube una imagen para verla en PixelZone.</p>
-
-<input type="file" id="foto" accept="image/*">
-
-<br><br>
-
-<canvas id="canvas" style="max-width:100%;"></canvas>
-
-<br>
-
-<button onclick="descargar()">
-⬇️ Descargar
-</button>
-
 </section>
 
-</main>
+<!-- EMOJIS Y STICKERS -->
+<section class="categoria" id="emojis">
+<h2>😀 Emojis y Stickers</h2>
 
+<div class="grid">
 
-<!-- CARRITO -->
+<div class="pack"><div class="icon">😀</div><h3>Mega Pack Emojis</h3><p>Gran colección de emojis.</p><div class="precio">$7.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
 
-<div class="modal" id="carritoModal">
+<div class="pack"><div class="icon">💬</div><h3>Pack Stickers</h3><p>Stickers para tus chats.</p><div class="precio">$6.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
 
-<div class="modal-box">
+<div class="pack"><div class="icon">😂</div><h3>Pack Meme</h3><p>Stickers y reacciones de memes.</p><div class="precio">$5.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
 
-<span class="close" onclick="cerrarCarrito()">×</span>
+<div class="pack"><div class="icon">🤣</div><h3>Pack Memes PRO</h3><p>Colección avanzada de memes.</p><div class="precio">$8.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
 
-<h2>🛒 Tu carrito</h2>
+<div class="pack"><div class="icon">😍</div><h3>Pack Emojis PRO</h3><p>Emojis especiales.</p><div class="precio">$8.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
 
-<div id="carritoLista"></div>
+<div class="pack"><div class="icon">🎉</div><h3>Pack Fiesta Stickers</h3><p>Stickers para celebraciones.</p><div class="precio">$6.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
 
-<div class="total">
-Total: $<span id="total">0</span> COP
+<div class="pack"><div class="icon">😈</div><h3>Pack Troll</h3><p>Stickers para trolear.</p><div class="precio">$7.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
+
+<div class="pack"><div class="icon">❤️</div><h3>Pack Love</h3><p>Emojis y stickers románticos.</p><div class="precio">$6.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
+
+<div class="pack"><div class="icon">⚽</div><h3>Pack Football Stickers</h3><p>Stickers de fútbol.</p><div class="precio">$7.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
+
+<div class="pack"><div class="icon">🎮</div><h3>Pack Gaming Stickers</h3><p>Stickers para gamers.</p><div class="precio">$7.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
+
+<div class="pack"><div class="icon">🥰</div><h3>Pack Cute Stickers</h3><p>Stickers tiernos.</p><div class="precio">$6.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
+
+<div class="pack"><div class="icon">🎃</div><h3>Pack Halloween Stickers</h3><p>Stickers de Halloween.</p><div class="precio">$6.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
+
+<div class="pack"><div class="icon">🎄</div><h3>Pack Navidad Stickers</h3><p>Stickers navideños.</p><div class="precio">$6.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
+
+<div class="pack"><div class="icon">👍</div><h3>Pack Reacciones</h3><p>Stickers para reaccionar.</p><div class="precio">$5.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
+
+<div class="pack"><div class="icon">🔥</div><h3>Pack Stickers MAX</h3><p>Gran colección de stickers.</p><div class="precio">$12.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
+
 </div>
+</section>
 
-<button class="pay" onclick="pagar()">
-💳 Continuar con el pago
-</button>
+<!-- VIDEOS -->
+<section class="categoria" id="videos">
+<h2>🎬 Videos</h2>
+
+<div class="grid">
+
+<div class="pack"><div class="icon">🎬</div><h3>Pack Video Creator</h3><p>Recursos para crear videos.</p><div class="precio">$9.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
+
+<div class="pack"><div class="icon">🎥</div><h3>Pack Video PRO</h3><p>Recursos avanzados para video.</p><div class="precio">$14.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
+
+<div class="pack"><div class="icon">💥</div><h3>Pack Video Effects</h3><p>Efectos para edición de video.</p><div class="precio">$9.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
+
+<div class="pack"><div class="icon">🔄</div><h3>Pack Transiciones</h3><p>Transiciones para tus videos.</p><div class="precio">$7.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
+
+<div class="pack"><div class="icon">🎞️</div><h3>Pack Cinemático</h3><p>Recursos para videos cinematográficos.</p><div class="precio">$12.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
+
+<div class="pack"><div class="icon">📱</div><h3>Pack Shorts</h3><p>Recursos para videos cortos.</p><div class="precio">$7.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
+
+<div class="pack"><div class="icon">📲</div><h3>Pack Reels</h3><p>Recursos para videos verticales.</p><div class="precio">$7.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
+
+<div class="pack"><div class="icon">🎵</div><h3>Pack Tik Creator</h3><p>Recursos para contenido vertical.</p><div class="precio">$9.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
+
+<div class="pack"><div class="icon">▶️</div><h3>Pack YouTuber</h3><p>Recursos para creadores de YouTube.</p><div class="precio">$11.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
+
+<div class="pack"><div class="icon">🎞️</div><h3>Pack Intro</h3><p>Recursos para intros.</p><div class="precio">$8.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
+
+<div class="pack"><div class="icon">🎬</div><h3>Pack Outro</h3><p>Recursos para finales de video.</p><div class="precio">$8.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
+
+<div class="pack"><div class="icon">✂️</div><h3>Pack CapCut</h3><p>Recursos para edición.</p><div class="precio">$9.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
+
+<div class="pack"><div class="icon">🌀</div><h3>Pack Motion</h3><p>Recursos de movimiento.</p><div class="precio">$12.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
+
+<div class="pack"><div class="icon">⚡</div><h3>Pack Video Glitch</h3><p>Efectos glitch para videos.</p><div class="precio">$9.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
+
+<div class="pack"><div class="icon">🏆</div><h3>Pack Video Ultimate</h3><p>Colección completa para video.</p><div class="precio">$19.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
 
 </div>
+</section>
+
+<!-- GAMING -->
+<section class="categoria" id="gaming">
+<h2>🎮 Gaming</h2>
+
+<div class="grid">
+
+<div class="pack"><div class="icon">🎮</div><h3>Pack Gaming</h3><p>Recursos generales para gamers.</p><div class="precio">$9.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
+
+<div class="pack"><div class="icon">🔥</div><h3>Pack Gamer PRO</h3><p>Recursos gaming premium.</p><div class="precio">$14.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
+
+<div class="pack"><div class="icon">🖥️</div><h3>Pack Gaming HUD</h3><p>Elementos HUD para gaming.</p><div class="precio">$9.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
+
+<div class="pack"><div class="icon">🎮</div><h3>Pack Gaming Wallpapers</h3><p>Fondos exclusivos gaming.</p><div class="precio">$8.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
+
+<div class="pack"><div class="icon">🎯</div><h3>Pack Gaming Icons</h3><p>Iconos para perfiles gaming.</p><div class="precio">$7.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
+
+<div class="pack"><div class="icon">🖼️</div><h3>Pack Gaming Banners</h3><p>Banners para perfiles gaming.</p><div class="precio">$9.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
+
+<div class="pack"><div class="icon">⚔️</div><h3>Pack Gaming Logos</h3><p>Logos para equipos gaming.</p><div class="precio">$11.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
+
+<div class="pack"><div class="icon">🖥️</div><h3>Pack Gaming Overlays</h3><p>Overlays para streamers.</p><div class="precio">$12.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
+
+<div class="pack"><div class="icon">🏆</div><h3>Pack Esports</h3><p>Recursos para esports.</p><div class="precio">$14.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
+
+<div class="pack"><div class="icon">🪂</div><h3>Pack Fortnite</h3><p>Recursos inspirados en Fortnite.</p><div class="precio">$9.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
+
+<div class="pack"><div class="icon">🟥</div><h3>Pack Roblox</h3><p>Recursos para contenido de Roblox.</p><div class="precio">$9.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
+
+<div class="pack"><div class="icon">⛏️</div><h3>Pack Minecraft</h3><p>Recursos para contenido de Minecraft.</p><div class="precio">$9.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
+
+<div class="pack"><div class="icon">🏎️</div><h3>Pack Racing</h3><p>Recursos para juegos de carreras.</p><div class="precio">$8.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
+
+<div class="pack"><div class="icon">⚽</div><h3>Pack Football Gaming</h3><p>Recursos para gaming de fútbol.</p><div class="precio">$9.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
+
+<div class="pack"><div class="icon">👑</div><h3>Pack Gamer Ultimate</h3><p>Colección gaming completa.</p><div class="precio">$19.900 COP</div><a class="btn" href="#contacto">Comprar</a></div>
 
 </div>
+</section>
 
+<!-- CONTACTO -->
+<section class="contacto" id="contacto">
+<h2>📞 Contacto</h2>
+
+<p>¿Quieres comprar un pack o hacer una consulta?</p>
+
+<a class="whatsapp"
+href="https://wa.me/573025564680?text=Hola%20PixelZone%2C%20quiero%20hacer%20un%20pedido."
+target="_blank">
+📅 Agenda tu pedido por WhatsApp
+</a>
+
+</section>
 
 <footer>
-
-<h2>✨ PixelZone</h2>
-
-<p>Tu tienda digital creativa.</p>
-
-<p style="margin-top:12px;color:#aaa;">
-© 2026 PixelZone
-</p>
-
+<p>© 2026 PixelZone — Todos los derechos reservados.</p>
 </footer>
-
-
-<script>
-
-let carrito = [];
-
-
-/* AGREGAR */
-
-function agregar(nombre,precio){
-
-carrito.push({
-nombre:nombre,
-precio:precio
-});
-
-actualizarCantidad();
-
-alert("✅ " + nombre + " fue agregado al carrito.");
-
-}
-
-
-/* CANTIDAD */
-
-function actualizarCantidad(){
-
-document.getElementById("cantidad").innerText =
-carrito.length;
-
-}
-
-
-/* ABRIR */
-
-function abrirCarrito(){
-
-mostrarCarrito();
-
-document.getElementById("carritoModal").style.display="flex";
-
-}
-
-
-/* CERRAR */
-
-function cerrarCarrito(){
-
-document.getElementById("carritoModal").style.display="none";
-
-}
-
-
-/* MOSTRAR */
-
-function mostrarCarrito(){
-
-let lista =
-document.getElementById("carritoLista");
-
-lista.innerHTML="";
-
-if(carrito.length===0){
-
-lista.innerHTML="<p style='margin-top:20px;'>Tu carrito está vacío.</p>";
-
-document.getElementById("total").innerText="0";
-
-return;
-
-}
-
-let total=0;
-
-carrito.forEach(function(item,index){
-
-total += item.precio;
-
-lista.innerHTML += `
-
-<div class="cart-item">
-
-<div>
-<strong>${item.nombre}</strong>
-<br>
-$${item.precio.toLocaleString("es-CO")} COP
-</div>
-
-<button onclick="eliminar(${index})">
-Eliminar
-</button>
-
-</div>
-
-`;
-
-});
-
-document.getElementById("total").innerText =
-total.toLocaleString("es-CO");
-
-}
-
-
-/* ELIMINAR */
-
-function eliminar(index){
-
-carrito.splice(index,1);
-
-actualizarCantidad();
-
-mostrarCarrito();
-
-}
-
-
-/* PAGAR */
-
-function pagar(){
-
-if(carrito.length===0){
-
-alert("Tu carrito está vacío.");
-
-return;
-
-}
-
-alert(
-"💳 El pedido está listo para continuar con el proceso de pago."
-);
-
-}
-
-
-/* WHATSAPP */
-
-function agenda(){
-
-let mensaje =
-"Hola PixelZone, quiero agendar un pedido.";
-
-window.open(
-"https://wa.me/573025564680?text="+
-encodeURIComponent(mensaje),
-"_blank"
-);
-
-}
-
-
-/* FILTRAR */
-
-function filtrar(categoria){
-
-let packs =
-document.querySelectorAll(".pack");
-
-packs.forEach(function(pack){
-
-if(categoria==="todos"){
-
-pack.style.display="block";
-
-}else{
-
-if(pack.dataset.cat===categoria){
-
-pack.style.display="block";
-
-}else{
-
-pack.style.display="none";
-
-}
-
-}
-
-});
-
-}
-
-
-/* BUSCADOR */
-
-document
-.getElementById("buscador")
-.addEventListener("input",function(){
-
-let texto =
-this.value.toLowerCase();
-
-let packs =
-document.querySelectorAll(".pack");
-
-packs.forEach(function(pack){
-
-let nombre =
-pack.querySelector("h3").innerText.toLowerCase();
-
-if(nombre.includes(texto)){
-
-pack.style.display="block";
-
-}else{
-
-pack.style.display="none";
-
-}
-
-});
-
-});
-
-
-/* EDITOR FOTO */
-
-document
-.getElementById("foto")
-.addEventListener("change",function(){
-
-let archivo=this.files[0];
-
-if(!archivo)return;
-
-let imagen=new Image();
-
-let lector=new FileReader();
-
-lector.onload=function(e){
-
-imagen.onload=function(){
-
-let canvas=
-document.getElementById("canvas");
-
-let ctx=
-canvas.getContext("2d");
-
-canvas.width=imagen.width;
-
-canvas.height=imagen.height;
-
-ctx.drawImage(
-imagen,
-0,
-0
-);
-
-};
-
-imagen.src=e.target.result;
-
-};
-
-lector.readAsDataURL(archivo);
-
-});
-
-
-/* DESCARGAR */
-
-function descargar(){
-
-let canvas=
-document.getElementById("canvas");
-
-if(canvas.width===0){
-
-alert("Primero sube una foto.");
-
-return;
-
-}
-
-let link=
-document.createElement("a");
-
-link.download="pixelzone.png";
-
-link.href=
-canvas.toDataURL();
-
-link.click();
-
-}
-
-</script>
 
 </body>
 </html>
-
