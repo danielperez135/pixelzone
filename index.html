@@ -1,10 +1,1235 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>PixelZone</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PixelZone 2.0</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,sans-serif;
+}
+
+body{
+  background:#f3f3f3;
+  color:#222;
+}
+
+header{
+  background:#ffe600;
+  padding:14px 5%;
+  display:flex;
+  align-items:center;
+  gap:15px;
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
+
+.logo{
+  font-size:26px;
+  font-weight:900;
+  white-space:nowrap;
+}
+
+.search{
+  flex:1;
+  display:flex;
+}
+
+.search input{
+  width:100%;
+  padding:14px;
+  border:0;
+  outline:0;
+  border-radius:8px 0 0 8px;
+  font-size:15px;
+}
+
+.search button{
+  border:0;
+  background:#222;
+  color:white;
+  padding:0 18px;
+  border-radius:0 8px 8px 0;
+  cursor:pointer;
+}
+
+.cart{
+  font-size:24px;
+  cursor:pointer;
+}
+
+.categories{
+  background:white;
+  padding:12px 5%;
+  display:flex;
+  gap:8px;
+  overflow-x:auto;
+}
+
+.categories button{
+  border:1px solid #ddd;
+  background:white;
+  padding:9px 14px;
+  border-radius:20px;
+  white-space:nowrap;
+  cursor:pointer;
+}
+
+.categories button:hover{
+  background:#ffe600;
+}
+
+.hero{
+  width:90%;
+  margin:20px auto;
+  padding:40px;
+  border-radius:18px;
+  color:white;
+  background:linear-gradient(135deg,#111,#444);
+}
+
+.hero h1{
+  font-size:40px;
+  margin-bottom:10px;
+}
+
+.products{
+  width:90%;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:18px;
+  padding-bottom:40px;
+}
+
+.product{
+  background:white;
+  border-radius:13px;
+  overflow:hidden;
+  box-shadow:0 2px 8px #ccc;
+  transition:.2s;
+}
+
+.product:hover{
+  transform:translateY(-5px);
+  box-shadow:0 8px 20px #bbb;
+}
+
+.product img{
+  width:100%;
+  height:270px;
+  object-fit:cover;
+  display:block;
+}
+
+.info{
+  padding:14px;
+}
+
+.name{
+  font-size:18px;
+  font-weight:bold;
+}
+
+.series{
+  color:#777;
+  margin-top:5px;
+}
+
+.price{
+  font-size:21px;
+  font-weight:bold;
+  margin:9px 0;
+}
+
+.stars{
+  color:#f5b400;
+}
+
+.view{
+  width:100%;
+  border:0;
+  padding:11px;
+  margin-top:10px;
+  background:#ffe600;
+  border-radius:8px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* MODAL */
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:#000b;
+  z-index:2000;
+  justify-content:center;
+  align-items:center;
+  padding:15px;
+}
+
+.modalBox{
+  width:95%;
+  max-width:1100px;
+  max-height:94vh;
+  overflow:auto;
+  background:white;
+  border-radius:18px;
+  padding:25px;
+  position:relative;
+}
+
+.close{
+  position:absolute;
+  right:18px;
+  top:8px;
+  font-size:35px;
+  cursor:pointer;
+}
+
+.detail{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
+}
+
+.mainImage{
+  width:100%;
+  height:430px;
+  object-fit:cover;
+  border-radius:12px;
+  background:#111;
+}
+
+.detail h2{
+  font-size:30px;
+}
+
+.detailPrice{
+  font-size:30px;
+  font-weight:bold;
+  margin:14px 0;
+}
+
+.action{
+  width:100%;
+  padding:14px;
+  border:0;
+  border-radius:8px;
+  margin-top:10px;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.buy{
+  background:#ffe600;
+}
+
+.whatsapp{
+  background:#25d366;
+  color:white;
+}
+
+/* VISTA */
+
+.preview{
+  background:#eee;
+  border-radius:15px;
+  margin-top:20px;
+  padding:20px;
+  text-align:center;
+}
+
+.switch button{
+  padding:10px 15px;
+  border:0;
+  border-radius:8px;
+  margin:10px 3px;
+  cursor:pointer;
+}
+
+.switch .active{
+  background:#ffe600;
+  font-weight:bold;
+}
+
+/* CELULAR */
+
+.phoneArea{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:510px;
+  perspective:900px;
+}
+
+.phone{
+  width:245px;
+  height:480px;
+  background:#080808;
+  border:6px solid #333;
+  border-radius:38px;
+  padding:8px;
+  box-shadow:0 20px 40px #777;
+  animation:floatPhone 3s infinite ease-in-out;
+}
+
+@keyframes floatPhone{
+
+  0%,100%{
+    transform:rotateY(-5deg) translateY(0);
+  }
+
+  50%{
+    transform:rotateY(5deg) translateY(-10px);
+  }
+
+}
+
+.screen{
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  border-radius:28px;
+  position:relative;
+}
+
+.screen img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  animation:wallpaperZoom 5s infinite alternate ease-in-out;
+}
+
+@keyframes wallpaperZoom{
+
+  from{
+    transform:scale(1);
+  }
+
+  to{
+    transform:scale(1.08);
+  }
+
+}
+
+/* PC */
+
+.computer{
+  min-height:500px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+
+.monitor{
+  width:90%;
+  background:#111;
+  padding:9px;
+  border-radius:12px;
+  box-shadow:0 15px 30px #777;
+}
+
+.monitor img{
+  width:100%;
+  aspect-ratio:16/9;
+  object-fit:cover;
+  border-radius:5px;
+}
+
+.base{
+  width:45%;
+  height:20px;
+  background:#555;
+  border-radius:0 0 15px 15px;
+}
+
+/* RESEÑAS */
+
+.review{
+  border-top:1px solid #ddd;
+  padding:12px 0;
+  margin-top:10px;
+}
+
+.starInput{
+  font-size:30px;
+  margin-top:12px;
+}
+
+.starInput span{
+  color:#bbb;
+  cursor:pointer;
+}
+
+.starInput span.active{
+  color:#f5b400;
+}
+
+textarea{
+  width:100%;
+  height:80px;
+  margin-top:10px;
+  padding:10px;
+  border:1px solid #ccc;
+  border-radius:8px;
+  resize:none;
+}
+
+/* CARRITO */
+
+.cartPanel{
+  position:fixed;
+  right:0;
+  top:0;
+  width:380px;
+  max-width:95%;
+  height:100%;
+  background:white;
+  z-index:3000;
+  padding:20px;
+  overflow:auto;
+  box-shadow:-5px 0 20px #555;
+  transform:translateX(100%);
+  transition:.3s;
+}
+
+.cartPanel.open{
+  transform:translateX(0);
+}
+
+.cartItem{
+  display:flex;
+  gap:10px;
+  padding:12px 0;
+  border-bottom:1px solid #ddd;
+}
+
+.cartItem img{
+  width:70px;
+  height:70px;
+  object-fit:cover;
+  border-radius:8px;
+}
+
+.total{
+  font-size:22px;
+  font-weight:bold;
+  margin-top:20px;
+}
+
+@media(max-width:700px){
+
+  header{
+    flex-wrap:wrap;
+  }
+
+  .logo{
+    width:100%;
+  }
+
+  .detail{
+    grid-template-columns:1fr;
+  }
+
+  .hero h1{
+    font-size:30px;
+  }
+
+}
+</style>
 </head>
+
 <body>
-    <h1>PIXELZONE</h1>
-    <p>¡La página funciona!</p>
+
+<header>
+
+<div class="logo">⚡ PixelZone 2.0</div>
+
+<div class="search">
+<input id="search" placeholder="Buscar Itachi, Goku, Naruto...">
+<button onclick="buscar()">🔎</button>
+</div>
+
+<div class="cart" onclick="abrirCarrito()">
+🛒 <span id="contador">0</span>
+</div>
+
+</header>
+
+<div class="categories">
+
+<button onclick="mostrar('Todos')">🏠 Todos</button>
+<button onclick="mostrar('Anime')">🎌 Anime</button>
+<button onclick="mostrar('Fútbol')">⚽ Fútbol</button>
+<button onclick="mostrar('Gatos')">🐱 Gatos</button>
+<button onclick="mostrar('Autos')">🚗 Autos</button>
+<button onclick="mostrar('Espacio')">🚀 Espacio</button>
+
+</div>
+
+<section class="hero">
+
+<h1>PixelZone 2.0</h1>
+
+<p>
+Fondos de pantalla para celular y computador.
+</p>
+
+</section>
+
+<main class="products" id="products"></main>
+
+
+<!-- PRODUCTO -->
+
+<div class="modal" id="modal">
+
+<div class="modalBox">
+
+<div class="close" onclick="cerrar()">×</div>
+
+<div class="detail">
+
+<div>
+
+<img id="mainImage" class="mainImage">
+
+<div class="preview">
+
+<h3>📱 ¿Dónde quieres verlo?</h3>
+
+<div class="switch">
+
+<button id="cellBtn" onclick="mostrarCelular()">
+📱 Celular
+</button>
+
+<button id="pcBtn" onclick="mostrarPC()">
+💻 Computador
+</button>
+
+</div>
+
+<div id="device"></div>
+
+</div>
+
+</div>
+
+<div>
+
+<h2 id="detailName"></h2>
+
+<p id="detailSeries"></p>
+
+<div class="stars">★★★★★</div>
+
+<div class="detailPrice" id="detailPrice"></div>
+
+<p id="detailDescription"></p>
+
+<button class="action buy" onclick="agregarCarrito()">
+🛒 Agregar al carrito
+</button>
+
+<button class="action whatsapp" onclick="agendar()">
+📅 Agendar pack
+</button>
+
+<br><br>
+
+<h2>⭐ Reseñas</h2>
+
+<div id="reviews"></div>
+
+<div class="starInput">
+
+<span onclick="calificar(1)">★</span>
+<span onclick="calificar(2)">★</span>
+<span onclick="calificar(3)">★</span>
+<span onclick="calificar(4)">★</span>
+<span onclick="calificar(5)">★</span>
+
+</div>
+
+<textarea
+id="reviewText"
+placeholder="Escribe tu reseña..."
+></textarea>
+
+<button class="action buy" onclick="publicarResena()">
+Publicar reseña
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- CARRITO -->
+
+<div class="cartPanel" id="cartPanel">
+
+<div class="close" onclick="cerrarCarrito()">×</div>
+
+<h2>🛒 Carrito</h2>
+
+<div id="cartItems"></div>
+
+<div class="total" id="total"></div>
+
+</div>
+
+
+<script>
+
+/*
+========================================
+IMÁGENES DE PERSONAJES
+========================================
+*/
+
+const productos = [
+
+{
+ id:1,
+ name:"Itachi Uchiha",
+ series:"Naruto",
+ category:"Anime",
+ price:8500,
+
+ image:
+ "https://commons.wikimedia.org/wiki/Special:Redirect/file/Itachi_uchihaa_112233.png",
+
+ description:
+ "Wallpaper de Itachi Uchiha para celular y computador."
+},
+
+{
+ id:2,
+ name:"Goku",
+ series:"Dragon Ball",
+ category:"Anime",
+ price:9500,
+
+ image:
+ "https://commons.wikimedia.org/wiki/Special:Redirect/file/Goku._%289371831162%29.jpg",
+
+ description:
+ "Wallpaper de Goku para tu dispositivo."
+},
+
+{
+ id:3,
+ name:"Naruto Uzumaki",
+ series:"Naruto",
+ category:"Anime",
+ price:7900,
+
+ image:
+ "https://commons.wikimedia.org/wiki/Special:Redirect/file/Bryon_Mode_Naruto.webp",
+
+ description:
+ "Wallpaper de Naruto Uzumaki."
+},
+
+{
+ id:4,
+ name:"Luffy",
+ series:"One Piece",
+ category:"Anime",
+ price:9900,
+
+ image:
+ "https://commons.wikimedia.org/wiki/Special:Redirect/file/Figura_Monkey_D_Luffy_A74007320250206.jpg",
+
+ description:
+ "Wallpaper de Monkey D. Luffy."
+},
+
+{
+ id:5,
+ name:"Tanjiro Kamado",
+ series:"Demon Slayer",
+ category:"Anime",
+ price:8700,
+
+ image:
+ "https://commons.wikimedia.org/wiki/Special:Redirect/file/Tanjiro_Kamado.jpg",
+
+ description:
+ "Wallpaper de Tanjiro Kamado."
+},
+
+{
+ id:6,
+ name:"Fútbol Champions",
+ series:"Football",
+ category:"Fútbol",
+ price:7200,
+
+ image:
+ "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=1000&q=80",
+
+ description:
+ "Wallpaper de fútbol."
+},
+
+{
+ id:7,
+ name:"Gato Neon",
+ series:"Cats",
+ category:"Gatos",
+ price:6500,
+
+ image:
+ "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?auto=format&fit=crop&w=1000&q=80",
+
+ description:
+ "Wallpaper de gato."
+},
+
+{
+ id:8,
+ name:"Auto Deportivo",
+ series:"Cars",
+ category:"Autos",
+ price:10500,
+
+ image:
+ "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1000&q=80",
+
+ description:
+ "Wallpaper de auto deportivo."
+},
+
+{
+ id:9,
+ name:"Galaxia",
+ series:"Space",
+ category:"Espacio",
+ price:7600,
+
+ image:
+ "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=1000&q=80",
+
+ description:
+ "Wallpaper espacial."
+}
+
+];
+
+let actual=null;
+let estrellas=5;
+
+
+/* MONEDA */
+
+function dinero(numero){
+
+ return new Intl.NumberFormat("es-CO",{
+   style:"currency",
+   currency:"COP",
+   maximumFractionDigits:0
+ }).format(numero);
+
+}
+
+
+/* MOSTRAR */
+
+function mostrar(categoria){
+
+ let lista =
+ categoria==="Todos"
+ ? productos
+ : productos.filter(p=>p.category===categoria);
+
+ let caja=document.getElementById("products");
+
+ caja.innerHTML="";
+
+ lista.forEach(p=>{
+
+   caja.innerHTML += `
+
+   <article class="product">
+
+     <img src="${p.image}" alt="${p.name}">
+
+     <div class="info">
+
+       <div class="name">
+       ${p.name}
+       </div>
+
+       <div class="series">
+       🎌 ${p.series}
+       </div>
+
+       <div class="price">
+       ${dinero(p.price)}
+       </div>
+
+       <div class="stars">
+       ★★★★★
+       </div>
+
+       <button class="view"
+       onclick="abrirProducto(${p.id})">
+
+       👁️ Ver
+
+       </button>
+
+     </div>
+
+   </article>
+
+   `;
+
+ });
+
+}
+
+
+/* ABRIR */
+
+function abrirProducto(id){
+
+ actual=productos.find(p=>p.id===id);
+
+ document.getElementById("modal").style.display="flex";
+
+ document.getElementById("detailName")
+ .textContent=actual.name;
+
+ document.getElementById("detailSeries")
+ .textContent="🎌 "+actual.series;
+
+ document.getElementById("detailPrice")
+ .textContent=dinero(actual.price);
+
+ document.getElementById("detailDescription")
+ .textContent=actual.description;
+
+ document.getElementById("mainImage")
+ .src=actual.image;
+
+ mostrarCelular();
+
+ cargarResenas();
+
+}
+
+
+/* CELULAR */
+
+function mostrarCelular(){
+
+ document.getElementById("cellBtn")
+ .classList.add("active");
+
+ document.getElementById("pcBtn")
+ .classList.remove("active");
+
+ document.getElementById("device").innerHTML=`
+
+ <div class="phoneArea">
+
+   <div class="phone">
+
+     <div class="screen">
+
+       <img src="${actual.image}"
+       alt="${actual.name}">
+
+     </div>
+
+   </div>
+
+ </div>
+
+ `;
+
+}
+
+
+/* PC */
+
+function mostrarPC(){
+
+ document.getElementById("pcBtn")
+ .classList.add("active");
+
+ document.getElementById("cellBtn")
+ .classList.remove("active");
+
+ document.getElementById("device").innerHTML=`
+
+ <div class="computer">
+
+   <div class="monitor">
+
+     <img src="${actual.image}"
+     alt="${actual.name}">
+
+   </div>
+
+   <div class="base"></div>
+
+ </div>
+
+ `;
+
+}
+
+
+/* CERRAR */
+
+function cerrar(){
+
+ document.getElementById("modal").style.display="none";
+
+}
+
+
+/* CARRITO */
+
+function obtenerCarrito(){
+
+ return JSON.parse(
+ localStorage.getItem("pixelzone_carrito") || "[]"
+ );
+
+}
+
+
+function guardarCarrito(lista){
+
+ localStorage.setItem(
+ "pixelzone_carrito",
+ JSON.stringify(lista)
+ );
+
+ actualizarContador();
+
+}
+
+
+function agregarCarrito(){
+
+ let lista=obtenerCarrito();
+
+ lista.push(actual);
+
+ guardarCarrito(lista);
+
+ alert("✅ Pack agregado al carrito.");
+
+}
+
+
+function actualizarContador(){
+
+ document.getElementById("contador")
+ .textContent=obtenerCarrito().length;
+
+}
+
+
+function abrirCarrito(){
+
+ document.getElementById("cartPanel")
+ .classList.add("open");
+
+ mostrarCarrito();
+
+}
+
+
+function cerrarCarrito(){
+
+ document.getElementById("cartPanel")
+ .classList.remove("open");
+
+}
+
+
+function mostrarCarrito(){
+
+ let lista=obtenerCarrito();
+
+ let caja=document.getElementById("cartItems");
+
+ caja.innerHTML="";
+
+ let total=0;
+
+ lista.forEach((p,i)=>{
+
+   total+=p.price;
+
+   caja.innerHTML += `
+
+   <div class="cartItem">
+
+     <img src="${p.image}">
+
+     <div>
+
+       <b>${p.name}</b>
+
+       <br>
+
+       ${dinero(p.price)}
+
+       <br>
+
+       <button onclick="eliminarCarrito(${i})">
+       ❌ Quitar
+       </button>
+
+     </div>
+
+   </div>
+
+   `;
+
+ });
+
+ document.getElementById("total")
+ .textContent="Total: "+dinero(total);
+
+}
+
+
+function eliminarCarrito(index){
+
+ let lista=obtenerCarrito();
+
+ lista.splice(index,1);
+
+ guardarCarrito(lista);
+
+ mostrarCarrito();
+
+}
+
+
+/* WHATSAPP */
+
+function agendar(){
+
+ let mensaje=
+ "Hola, quiero agendar el pack "+
+ actual.name+
+ " por "+
+ dinero(actual.price);
+
+ window.open(
+ "https://wa.me/573025564680?text="+
+ encodeURIComponent(mensaje),
+ "_blank"
+ );
+
+}
+
+
+/* ESTRELLAS */
+
+function calificar(numero){
+
+ estrellas=numero;
+
+ document.querySelectorAll(".starInput span")
+ .forEach((s,i)=>{
+
+   s.classList.toggle(
+   "active",
+   i<numero
+   );
+
+ });
+
+}
+
+
+/* RESEÑAS */
+
+function cargarResenas(){
+
+ let key="pixelzone_reviews_"+actual.id;
+
+ let lista=JSON.parse(
+ localStorage.getItem(key)||"[]"
+ );
+
+ let caja=document.getElementById("reviews");
+
+ caja.innerHTML="";
+
+ lista.forEach(r=>{
+
+   caja.innerHTML += `
+
+   <div class="review">
+
+     <div class="stars">
+     ${"★".repeat(r.stars)}
+     ${"☆".repeat(5-r.stars)}
+     </div>
+
+     <p>${r.text}</p>
+
+   </div>
+
+   `;
+
+ });
+
+}
+
+
+function publicarResena(){
+
+ let texto=
+ document.getElementById("reviewText")
+ .value.trim();
+
+ if(!texto){
+
+   alert("Escribe una reseña.");
+
+   return;
+
+ }
+
+ let key="pixelzone_reviews_"+actual.id;
+
+ let lista=JSON.parse(
+ localStorage.getItem(key)||"[]"
+ );
+
+ lista.push({
+   stars:estrellas,
+   text:texto
+ });
+
+ localStorage.setItem(
+ key,
+ JSON.stringify(lista)
+ );
+
+ document.getElementById("reviewText")
+ .value="";
+
+ cargarResenas();
+
+}
+
+
+/* BUSCAR */
+
+function buscar(){
+
+ let texto=
+ document.getElementById("search")
+ .value
+ .toLowerCase();
+
+ let resultado=productos.filter(p=>
+
+ (
+   p.name+" "+
+   p.series+" "+
+   p.category+" "+
+   p.description
+ )
+ .toLowerCase()
+ .includes(texto)
+
+ );
+
+ let caja=document.getElementById("products");
+
+ caja.innerHTML="";
+
+ resultado.forEach(p=>{
+
+   caja.innerHTML += `
+
+   <article class="product">
+
+     <img src="${p.image}">
+
+     <div class="info">
+
+       <div class="name">
+       ${p.name}
+       </div>
+
+       <div class="series">
+       🎌 ${p.series}
+       </div>
+
+       <div class="price">
+       ${dinero(p.price)}
+       </div>
+
+       <div class="stars">
+       ★★★★★
+       </div>
+
+       <button class="view"
+       onclick="abrirProducto(${p.id})">
+       👁️ Ver
+       </button>
+
+     </div>
+
+   </article>
+
+   `;
+
+ });
+
+}
+
+
+/* ENTER EN BUSCADOR */
+
+document.getElementById("search")
+.addEventListener("keydown",function(e){
+
+ if(e.key==="Enter"){
+   buscar();
+ }
+
+});
+
+
+/* INICIAR */
+
+mostrar("Todos");
+
+actualizarContador();
+
+</script>
+
 </body>
 </html>
