@@ -1,353 +1,1001 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PixelZone</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PixelZone</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #111827;
-            color: white;
-        }
+body{
+  font-family:Arial,sans-serif;
+  background:#f5f5f7;
+  color:#171717;
+}
 
-        header {
-            padding: 50px 20px;
-            text-align: center;
-            background: linear-gradient(135deg, #2563eb, #7c3aed);
-        }
+header{
+  background:linear-gradient(135deg,#6d28d9,#9333ea);
+  color:white;
+  padding:18px 6%;
+  position:sticky;
+  top:0;
+  z-index:100;
+}
 
-        h1 {
-            font-size: 45px;
-            margin: 0;
-        }
+.header{
+  max-width:1300px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  gap:20px;
+}
 
-        header p {
-            font-size: 18px;
-        }
+.logo{
+  font-size:28px;
+  font-weight:bold;
+}
 
-        .contenido {
-            padding: 35px 20px;
-            max-width: 1100px;
-            margin: auto;
-            text-align: center;
-        }
+.search{
+  flex:1;
+}
 
-        .tarjetas {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
+.search input{
+  width:100%;
+  padding:14px 20px;
+  border:0;
+  border-radius:30px;
+  font-size:16px;
+  outline:none;
+}
 
-        .tarjeta {
-            background: #1f2937;
-            padding: 25px;
-            border-radius: 18px;
-            width: 230px;
-            box-shadow: 0 8px 20px #0005;
-            transition: 0.2s;
-        }
+.cart{
+  background:white;
+  color:#6d28d9;
+  border:0;
+  padding:13px 18px;
+  border-radius:25px;
+  cursor:pointer;
+  font-weight:bold;
+}
 
-        .tarjeta:hover {
-            transform: translateY(-5px);
-        }
+nav{
+  background:white;
+  padding:12px 6%;
+  display:flex;
+  gap:10px;
+  overflow:auto;
+}
 
-        .tarjeta h2 {
-            color: #60a5fa;
-        }
+nav button{
+  border:0;
+  padding:10px 17px;
+  border-radius:20px;
+  background:#eee7ff;
+  color:#5b21b6;
+  cursor:pointer;
+  white-space:nowrap;
+}
 
-        button {
-            background: #2563eb;
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 15px;
-        }
+.hero{
+  width:90%;
+  max-width:1300px;
+  margin:30px auto;
+  padding:60px;
+  border-radius:30px;
+  color:white;
+  background:linear-gradient(135deg,#111827,#581c87,#7e22ce);
+}
 
-        button:hover {
-            background: #1d4ed8;
-        }
+.hero h1{
+  font-size:48px;
+  max-width:700px;
+  margin-bottom:15px;
+}
 
-        .seccion {
-            display: none;
-            margin-top: 40px;
-            background: #1f2937;
-            padding: 25px;
-            border-radius: 18px;
-        }
+.hero p{
+  font-size:18px;
+  max-width:650px;
+  margin-bottom:25px;
+}
 
-        .seccion.activa {
-            display: block;
-        }
+.hero button{
+  border:0;
+  padding:14px 22px;
+  border-radius:25px;
+  cursor:pointer;
+  font-weight:bold;
+  margin-right:8px;
+}
 
-        .fondos {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-        }
+.ver{
+  color:#6d28d9;
+}
 
-        .fondo {
-            width: 180px;
-            height: 120px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-        }
+.whatsapp{
+  background:#22c55e;
+  color:white;
+}
 
-        .fondo1 {
-            background: linear-gradient(135deg, #2563eb, #06b6d4);
-        }
+.container{
+  width:90%;
+  max-width:1300px;
+  margin:auto;
+}
 
-        .fondo2 {
-            background: linear-gradient(135deg, #7c3aed, #ec4899);
-        }
+.title{
+  font-size:30px;
+  margin:35px 0 20px;
+}
 
-        .fondo3 {
-            background: linear-gradient(135deg, #111827, #4b5563);
-        }
+.packs{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
 
-        .fondo4 {
-            background: linear-gradient(135deg, #16a34a, #22c55e);
-        }
+.pack{
+  background:white;
+  padding:18px;
+  border-radius:20px;
+  box-shadow:0 5px 20px #00000012;
+  transition:.2s;
+}
 
-        .video {
-            margin: 15px auto;
-            max-width: 600px;
-        }
+.pack:hover{
+  transform:translateY(-5px);
+}
 
-        input[type="file"] {
-            margin: 15px;
-        }
+.pack-img{
+  height:160px;
+  border-radius:15px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:65px;
+  background:linear-gradient(135deg,#ede9fe,#faf5ff);
+  margin-bottom:15px;
+}
 
-        canvas {
-            max-width: 100%;
-            background: white;
-            border-radius: 10px;
-            margin-top: 15px;
-        }
+.pack h3{
+  margin-bottom:8px;
+}
 
-        footer {
-            text-align: center;
-            padding: 30px;
-            margin-top: 40px;
-            background: #0f172a;
-            color: #94a3b8;
-        }
-    </style>
+.pack p{
+  color:#777;
+  font-size:14px;
+  min-height:35px;
+}
+
+.price{
+  color:#6d28d9;
+  font-size:21px;
+  font-weight:bold;
+  margin:12px 0;
+}
+
+.pack button{
+  width:100%;
+  border:0;
+  padding:12px;
+  border-radius:10px;
+  background:#6d28d9;
+  color:white;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.editor{
+  margin-top:45px;
+  background:white;
+  padding:25px;
+  border-radius:20px;
+}
+
+.editor input{
+  margin-top:15px;
+}
+
+footer{
+  margin-top:60px;
+  background:#111827;
+  color:white;
+  text-align:center;
+  padding:40px;
+}
+
+/* MODALES */
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:#0008;
+  z-index:1000;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.modal-box{
+  background:white;
+  width:100%;
+  max-width:550px;
+  max-height:90vh;
+  overflow:auto;
+  padding:25px;
+  border-radius:20px;
+  position:relative;
+}
+
+.close{
+  position:absolute;
+  right:20px;
+  top:12px;
+  font-size:30px;
+  cursor:pointer;
+}
+
+.cart-item{
+  padding:15px 0;
+  border-bottom:1px solid #ddd;
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+}
+
+.cart-item button{
+  border:0;
+  background:#ef4444;
+  color:white;
+  border-radius:8px;
+  padding:7px;
+  cursor:pointer;
+}
+
+.total{
+  font-size:22px;
+  font-weight:bold;
+  margin:20px 0;
+}
+
+.pay{
+  width:100%;
+  padding:14px;
+  background:#6d28d9;
+  color:white;
+  border:0;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+@media(max-width:700px){
+
+  .header{
+    flex-wrap:wrap;
+  }
+
+  .search{
+    order:3;
+    width:100%;
+  }
+
+  .hero{
+    padding:35px 25px;
+  }
+
+  .hero h1{
+    font-size:35px;
+  }
+}
+</style>
 </head>
 
 <body>
 
 <header>
-    <h1>🎨 PixelZone</h1>
-    <p>Tu zona para crear, editar y disfrutar contenido digital</p>
-</header>
 
-<div class="contenido">
+<div class="header">
 
-    <h2>🚀 ¿Qué puedes hacer?</h2>
+<div class="logo">
+✨ PixelZone
+</div>
 
-    <div class="tarjetas">
+<div class="search">
+<input
+id="buscador"
+type="text"
+placeholder="🔎 Buscar packs..."
+>
+</div>
 
-        <div class="tarjeta">
-            <h2>🖼️ Fondos</h2>
-            <p>Explora fondos para tu celular o computadora.</p>
-            <button onclick="mostrar('fondos')">Ver fondos</button>
-        </div>
-
-        <div class="tarjeta">
-            <h2>🎬 Videos</h2>
-            <p>Agrega y reproduce tus propios videos.</p>
-            <button onclick="mostrar('videos')">Ver videos</button>
-        </div>
-
-        <div class="tarjeta">
-            <h2>📸 Editor</h2>
-            <p>Sube una imagen y aplica filtros sencillos.</p>
-            <button onclick="mostrar('editor')">Editar fotos</button>
-        </div>
-
-        <div class="tarjeta">
-            <h2>✨ Más</h2>
-            <p>Próximamente tendremos más herramientas.</p>
-            <button onclick="mostrar('mas')">Explorar</button>
-        </div>
-
-    </div>
-
-    <!-- FONDOS -->
-    <div id="fondos" class="seccion">
-
-        <h2>🖼️ Fondos de pantalla</h2>
-        <p>Elige tu estilo favorito.</p>
-
-        <div class="fondos">
-            <div class="fondo fondo1">💙 AZUL</div>
-            <div class="fondo fondo2">💜 NEÓN</div>
-            <div class="fondo fondo3">🖤 DARK</div>
-            <div class="fondo fondo4">💚 VERDE</div>
-        </div>
-
-    </div>
-
-    <!-- VIDEOS -->
-    <div id="videos" class="seccion">
-
-        <h2>🎬 Videos</h2>
-
-        <p>Selecciona un video de tu dispositivo para reproducirlo.</p>
-
-        <input type="file" accept="video/*" onchange="cargarVideo(event)">
-
-        <div class="video">
-            <video id="videoPlayer" controls width="100%" style="display:none;"></video>
-        </div>
-
-    </div>
-
-    <!-- EDITOR -->
-    <div id="editor" class="seccion">
-
-        <h2>📸 Editor de fotos</h2>
-
-        <p>Selecciona una imagen para comenzar.</p>
-
-        <input type="file" accept="image/*" onchange="cargarImagen(event)">
-
-        <br>
-
-        <button onclick="filtroGris()">🌑 Blanco y negro</button>
-        <button onclick="filtroNormal()">🔄 Normal</button>
-
-        <br>
-
-        <canvas id="canvas"></canvas>
-
-    </div>
-
-    <!-- MÁS -->
-    <div id="mas" class="seccion">
-
-        <h2>✨ Próximamente</h2>
-
-        <p>Estamos preparando nuevas herramientas para PixelZone.</p>
-
-        <p>🎨 Más diseños</p>
-        <p>🎬 Más contenido</p>
-        <p>🖼️ Más fondos</p>
-        <p>⚡ Nuevas herramientas</p>
-
-    </div>
+<button class="cart" onclick="abrirCarrito()">
+🛒 Carrito (<span id="cantidad">0</span>)
+</button>
 
 </div>
 
+</header>
+
+
+<nav>
+
+<button onclick="filtrar('todos')">🏠 Todos</button>
+<button onclick="filtrar('wallpapers')">🖼️ Wallpapers</button>
+<button onclick="filtrar('emojis')">😀 Emojis</button>
+<button onclick="filtrar('stickers')">🔥 Stickers</button>
+<button onclick="filtrar('fotos')">📸 Fotos</button>
+<button onclick="filtrar('videos')">🎬 Videos</button>
+<button onclick="filtrar('gaming')">🎮 Gaming</button>
+<button onclick="filtrar('sonidos')">🔊 Sonidos</button>
+
+</nav>
+
+
+<section class="hero">
+
+<h1>
+Todo para crear. Todo en PixelZone.
+</h1>
+
+<p>
+Wallpapers, emojis, stickers, fotos, videos,
+sonidos y packs digitales.
+</p>
+
+<button class="ver" onclick="document.getElementById('tienda').scrollIntoView()">
+🛍️ Ver packs
+</button>
+
+<button class="whatsapp" onclick="agenda()">
+📅 Agenda tu pedido
+</button>
+
+</section>
+
+
+<main class="container" id="tienda">
+
+<h2 class="title">
+🔥 Packs de PixelZone
+</h2>
+
+<div class="packs" id="packs">
+
+
+<!-- PACKS -->
+
+<div class="pack" data-cat="wallpapers">
+
+<div class="pack-img">🌌</div>
+
+<h3>Mega Pack PixelZone</h3>
+
+<p>Una colección completa de recursos.</p>
+
+<div class="price">$14.900 COP</div>
+
+<button onclick="agregar('Mega Pack PixelZone',14900)">
+🛒 Agregar
+</button>
+
+</div>
+
+
+<div class="pack" data-cat="wallpapers">
+
+<div class="pack-img">🌈</div>
+
+<h3>Pack Neón</h3>
+
+<p>Fondos con diseños neón.</p>
+
+<div class="price">$4.900 COP</div>
+
+<button onclick="agregar('Pack Neón',4900)">
+🛒 Agregar
+</button>
+
+</div>
+
+
+<div class="pack" data-cat="wallpapers">
+
+<div class="pack-img">🚀</div>
+
+<h3>Pack Futurista</h3>
+
+<p>Fondos futuristas y tecnológicos.</p>
+
+<div class="price">$12.900 COP</div>
+
+<button onclick="agregar('Pack Futurista',12900)">
+🛒 Agregar
+</button>
+
+</div>
+
+
+<div class="pack" data-cat="emojis">
+
+<div class="pack-img">😀</div>
+
+<h3>Mega Pack Emojis</h3>
+
+<p>Emojis para tus proyectos.</p>
+
+<div class="price">$3.900 COP</div>
+
+<button onclick="agregar('Mega Pack Emojis',3900)">
+🛒 Agregar
+</button>
+
+</div>
+
+
+<div class="pack" data-cat="stickers">
+
+<div class="pack-img">🔥</div>
+
+<h3>Pack Stickers</h3>
+
+<p>Stickers divertidos y creativos.</p>
+
+<div class="price">$4.900 COP</div>
+
+<button onclick="agregar('Pack Stickers',4900)">
+🛒 Agregar
+</button>
+
+</div>
+
+
+<div class="pack" data-cat="fotos">
+
+<div class="pack-img">📸</div>
+
+<h3>Pack Fotos PRO</h3>
+
+<p>Recursos fotográficos.</p>
+
+<div class="price">$6.900 COP</div>
+
+<button onclick="agregar('Pack Fotos PRO',6900)">
+🛒 Agregar
+</button>
+
+</div>
+
+
+<div class="pack" data-cat="videos">
+
+<div class="pack-img">🎬</div>
+
+<h3>Creator PRO</h3>
+
+<p>Recursos para crear videos.</p>
+
+<div class="price">$19.900 COP</div>
+
+<button onclick="agregar('Creator PRO',19900)">
+🛒 Agregar
+</button>
+
+</div>
+
+
+<div class="pack" data-cat="videos">
+
+<div class="pack-img">📱</div>
+
+<h3>Pack Viral</h3>
+
+<p>Recursos para contenido viral.</p>
+
+<div class="price">$11.900 COP</div>
+
+<button onclick="agregar('Pack Viral',11900)">
+🛒 Agregar
+</button>
+
+</div>
+
+
+<div class="pack" data-cat="gaming">
+
+<div class="pack-img">🎮</div>
+
+<h3>Gaming Pack</h3>
+
+<p>Recursos especiales para gamers.</p>
+
+<div class="price">$12.900 COP</div>
+
+<button onclick="agregar('Gaming Pack',12900)">
+🛒 Agregar
+</button>
+
+</div>
+
+
+<div class="pack" data-cat="gaming">
+
+<div class="pack-img">⚽</div>
+
+<h3>Pack Football</h3>
+
+<p>Recursos para contenido de fútbol.</p>
+
+<div class="price">$11.900 COP</div>
+
+<button onclick="agregar('Pack Football',11900)">
+🛒 Agregar
+</button>
+
+</div>
+
+
+<div class="pack" data-cat="sonidos">
+
+<div class="pack-img">🔊</div>
+
+<h3>Pack Sound FX</h3>
+
+<p>Efectos de sonido para videos.</p>
+
+<div class="price">$4.900 COP</div>
+
+<button onclick="agregar('Pack Sound FX',4900)">
+🛒 Agregar
+</button>
+
+</div>
+
+
+<div class="pack" data-cat="stickers">
+
+<div class="pack-img">😂</div>
+
+<h3>Pack Meme</h3>
+
+<p>Recursos para crear memes.</p>
+
+<div class="price">$7.900 COP</div>
+
+<button onclick="agregar('Pack Meme',7900)">
+🛒 Agregar
+</button>
+
+</div>
+
+
+<div class="pack" data-cat="fotos">
+
+<div class="pack-img">✨</div>
+
+<h3>Pack Aesthetic</h3>
+
+<p>Recursos aesthetic para tus diseños.</p>
+
+<div class="price">$13.900 COP</div>
+
+<button onclick="agregar('Pack Aesthetic',13900)">
+🛒 Agregar
+</button>
+
+</div>
+
+
+<div class="pack" data-cat="videos">
+
+<div class="pack-img">💎</div>
+
+<h3>Pack Ultimate</h3>
+
+<p>Nuestro paquete más completo.</p>
+
+<div class="price">$39.900 COP</div>
+
+<button onclick="agregar('Pack Ultimate',39900)">
+🛒 Agregar
+</button>
+
+</div>
+
+
+<div class="pack" data-cat="wallpapers">
+
+<div class="pack-img">💻</div>
+
+<h3>Pack Cyber</h3>
+
+<p>Diseños cyber tecnológicos.</p>
+
+<div class="price">$15.900 COP</div>
+
+<button onclick="agregar('Pack Cyber',15900)">
+🛒 Agregar
+</button>
+
+</div>
+
+
+<div class="pack" data-cat="videos">
+
+<div class="pack-img">🎥</div>
+
+<h3>Creator MAX</h3>
+
+<p>Recursos avanzados para creadores.</p>
+
+<div class="price">$29.900 COP</div>
+
+<button onclick="agregar('Creator MAX',29900)">
+🛒 Agregar
+</button>
+
+</div>
+
+
+</div>
+
+
+<!-- EDITOR -->
+
+<section class="editor">
+
+<h2>📸 Editor de fotos</h2>
+
+<p>Sube una imagen para verla en PixelZone.</p>
+
+<input type="file" id="foto" accept="image/*">
+
+<br><br>
+
+<canvas id="canvas" style="max-width:100%;"></canvas>
+
+<br>
+
+<button onclick="descargar()">
+⬇️ Descargar
+</button>
+
+</section>
+
+</main>
+
+
+<!-- CARRITO -->
+
+<div class="modal" id="carritoModal">
+
+<div class="modal-box">
+
+<span class="close" onclick="cerrarCarrito()">×</span>
+
+<h2>🛒 Tu carrito</h2>
+
+<div id="carritoLista"></div>
+
+<div class="total">
+Total: $<span id="total">0</span> COP
+</div>
+
+<button class="pay" onclick="pagar()">
+💳 Continuar con el pago
+</button>
+
+</div>
+
+</div>
+
+
 <footer>
-    © 2026 PixelZone — Tu zona digital 🚀
+
+<h2>✨ PixelZone</h2>
+
+<p>Tu tienda digital creativa.</p>
+
+<p style="margin-top:12px;color:#aaa;">
+© 2026 PixelZone
+</p>
+
 </footer>
+
 
 <script>
 
-    function mostrar(id) {
-
-        document.querySelectorAll(".seccion").forEach(function(seccion) {
-            seccion.classList.remove("activa");
-        });
-
-        document.getElementById(id).classList.add("activa");
-
-        document.getElementById(id).scrollIntoView({
-            behavior: "smooth"
-        });
-    }
+let carrito = [];
 
 
-    function cargarVideo(event) {
+/* AGREGAR */
 
-        const archivo = event.target.files[0];
+function agregar(nombre,precio){
 
-        if (!archivo) return;
+carrito.push({
+nombre:nombre,
+precio:precio
+});
 
-        const video = document.getElementById("videoPlayer");
+actualizarCantidad();
 
-        video.src = URL.createObjectURL(archivo);
-        video.style.display = "block";
-    }
+alert("✅ " + nombre + " fue agregado al carrito.");
 
-
-    let imagenOriginal = null;
-
-    function cargarImagen(event) {
-
-        const archivo = event.target.files[0];
-
-        if (!archivo) return;
-
-        const imagen = new Image();
-
-        imagen.onload = function() {
-
-            const canvas = document.getElementById("canvas");
-            const ctx = canvas.getContext("2d");
-
-            canvas.width = imagen.width;
-            canvas.height = imagen.height;
-
-            ctx.drawImage(imagen, 0, 0);
-
-            imagenOriginal = imagen;
-        };
-
-        imagen.src = URL.createObjectURL(archivo);
-    }
+}
 
 
-    function filtroNormal() {
+/* CANTIDAD */
 
-        if (!imagenOriginal) {
-            alert("Primero selecciona una imagen.");
-            return;
-        }
+function actualizarCantidad(){
 
-        const canvas = document.getElementById("canvas");
-        const ctx = canvas.getContext("2d");
+document.getElementById("cantidad").innerText =
+carrito.length;
 
-        ctx.filter = "none";
-        ctx.drawImage(imagenOriginal, 0, 0);
-    }
+}
 
 
-    function filtroGris() {
+/* ABRIR */
 
-        if (!imagenOriginal) {
-            alert("Primero selecciona una imagen.");
-            return;
-        }
+function abrirCarrito(){
 
-        const canvas = document.getElementById("canvas");
-        const ctx = canvas.getContext("2d");
+mostrarCarrito();
 
-        ctx.filter = "grayscale(100%)";
-        ctx.drawImage(imagenOriginal, 0, 0);
+document.getElementById("carritoModal").style.display="flex";
 
-        ctx.filter = "none";
-    }
+}
+
+
+/* CERRAR */
+
+function cerrarCarrito(){
+
+document.getElementById("carritoModal").style.display="none";
+
+}
+
+
+/* MOSTRAR */
+
+function mostrarCarrito(){
+
+let lista =
+document.getElementById("carritoLista");
+
+lista.innerHTML="";
+
+if(carrito.length===0){
+
+lista.innerHTML="<p style='margin-top:20px;'>Tu carrito está vacío.</p>";
+
+document.getElementById("total").innerText="0";
+
+return;
+
+}
+
+let total=0;
+
+carrito.forEach(function(item,index){
+
+total += item.precio;
+
+lista.innerHTML += `
+
+<div class="cart-item">
+
+<div>
+<strong>${item.nombre}</strong>
+<br>
+$${item.precio.toLocaleString("es-CO")} COP
+</div>
+
+<button onclick="eliminar(${index})">
+Eliminar
+</button>
+
+</div>
+
+`;
+
+});
+
+document.getElementById("total").innerText =
+total.toLocaleString("es-CO");
+
+}
+
+
+/* ELIMINAR */
+
+function eliminar(index){
+
+carrito.splice(index,1);
+
+actualizarCantidad();
+
+mostrarCarrito();
+
+}
+
+
+/* PAGAR */
+
+function pagar(){
+
+if(carrito.length===0){
+
+alert("Tu carrito está vacío.");
+
+return;
+
+}
+
+alert(
+"💳 El pedido está listo para continuar con el proceso de pago."
+);
+
+}
+
+
+/* WHATSAPP */
+
+function agenda(){
+
+let mensaje =
+"Hola PixelZone, quiero agendar un pedido.";
+
+window.open(
+"https://wa.me/573025564680?text="+
+encodeURIComponent(mensaje),
+"_blank"
+);
+
+}
+
+
+/* FILTRAR */
+
+function filtrar(categoria){
+
+let packs =
+document.querySelectorAll(".pack");
+
+packs.forEach(function(pack){
+
+if(categoria==="todos"){
+
+pack.style.display="block";
+
+}else{
+
+if(pack.dataset.cat===categoria){
+
+pack.style.display="block";
+
+}else{
+
+pack.style.display="none";
+
+}
+
+}
+
+});
+
+}
+
+
+/* BUSCADOR */
+
+document
+.getElementById("buscador")
+.addEventListener("input",function(){
+
+let texto =
+this.value.toLowerCase();
+
+let packs =
+document.querySelectorAll(".pack");
+
+packs.forEach(function(pack){
+
+let nombre =
+pack.querySelector("h3").innerText.toLowerCase();
+
+if(nombre.includes(texto)){
+
+pack.style.display="block";
+
+}else{
+
+pack.style.display="none";
+
+}
+
+});
+
+});
+
+
+/* EDITOR FOTO */
+
+document
+.getElementById("foto")
+.addEventListener("change",function(){
+
+let archivo=this.files[0];
+
+if(!archivo)return;
+
+let imagen=new Image();
+
+let lector=new FileReader();
+
+lector.onload=function(e){
+
+imagen.onload=function(){
+
+let canvas=
+document.getElementById("canvas");
+
+let ctx=
+canvas.getContext("2d");
+
+canvas.width=imagen.width;
+
+canvas.height=imagen.height;
+
+ctx.drawImage(
+imagen,
+0,
+0
+);
+
+};
+
+imagen.src=e.target.result;
+
+};
+
+lector.readAsDataURL(archivo);
+
+});
+
+
+/* DESCARGAR */
+
+function descargar(){
+
+let canvas=
+document.getElementById("canvas");
+
+if(canvas.width===0){
+
+alert("Primero sube una foto.");
+
+return;
+
+}
+
+let link=
+document.createElement("a");
+
+link.download="pixelzone.png";
+
+link.href=
+canvas.toDataURL();
+
+link.click();
+
+}
 
 </script>
 
 </body>
 </html>
-```
-v
+
